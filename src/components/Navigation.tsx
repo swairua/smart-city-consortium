@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -6,6 +6,19 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [supportsBlur, setSupportsBlur] = useState(false);
+
+  useEffect(() => {
+    try {
+      const ua = navigator.userAgent || "";
+      const isWindows = ua.includes("Windows");
+      const isChrome = ua.includes("Chrome") && !ua.includes("Edg/");
+      const hasSupport = typeof CSS !== "undefined" && "supports" in CSS && CSS.supports("backdrop-filter: blur(2px)");
+      setSupportsBlur(hasSupport && !(isWindows && isChrome));
+    } catch {
+      setSupportsBlur(false);
+    }
+  }, []);
   const navGroups = {
     projects: {
       label: "Projects",
@@ -55,7 +68,7 @@ const Navigation = () => {
     label: "Contact",
     href: "#contact"
   }];
-  return <nav className="fixed top-0 left-0 right-0 z-50 bg-navy-deep/95 backdrop-blur-md border-b border-white/10">
+  return <nav className={cn("fixed top-0 left-0 right-0 z-50 bg-navy-deep/95 border-b border-white/10", supportsBlur && "backdrop-blur-md")}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -78,7 +91,7 @@ const Navigation = () => {
                   {group.label}
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-navy-deep/95 backdrop-blur-md border border-white/10 z-[60]">
+                <DropdownMenuContent className={cn("bg-navy-deep/95 border border-white/10 z-[60]", supportsBlur && "backdrop-blur-md")}>
                   {group.items.map(item => <DropdownMenuItem key={item.label} className="text-white/80 hover:text-emerald hover:bg-white/5">
                       <a href={item.href} className="w-full">
                         {item.label}

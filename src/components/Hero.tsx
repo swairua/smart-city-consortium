@@ -28,6 +28,9 @@ const Hero = () => {
           src={heroImage}
           alt="Smart City Consortium Smart Solar Mini-Grid"
           className="w-full h-full object-cover"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-overlay"></div>
       </div>

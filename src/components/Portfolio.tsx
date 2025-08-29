@@ -143,6 +143,8 @@ const Portfolio = () => {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute top-4 right-4">
                     <Badge className={getStatusColor(project.status)}>

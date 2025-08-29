@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smart City Consortium Design System - Executive Grade Solar EPC/IPP */
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --background: 0 0% 100%;
+    --foreground: 220 39% 11%;
+
+    /* Navy Foundation */
+    --navy-deep: 220 39% 11%;
+    --navy-medium: 220 26% 14%;
+    --navy-light: 220 16% 22%;
+
+    /* Charcoal Foundation */
+    --charcoal: 210 11% 15%;
+    --charcoal-light: 210 9% 31%;
+
+    /* Emerald Accents */
+    --emerald: 158 64% 52%;
+    --emerald-light: 160 84% 39%;
+    --emerald-dark: 158 64% 42%;
+
+    /* Semantic Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 220 39% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 39% 11%;
+
+    --primary: 220 39% 11%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 158 64% 52%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 13% 91%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 158 64% 52%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 158 64% 52%;
+
+    --radius: 0.75rem;
+
+    /* Executive Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--navy-deep)), hsl(var(--navy-medium)));
+    --gradient-emerald: linear-gradient(135deg, hsl(var(--emerald)), hsl(var(--emerald-light)));
+    --gradient-overlay: linear-gradient(135deg, hsl(var(--navy-deep) / 0.9), hsl(var(--charcoal) / 0.8));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted) / 0.3));
+
+    /* Premium Shadows */
+    --shadow-executive: 0 25px 50px -12px hsl(var(--navy-deep) / 0.25);
+    --shadow-emerald: 0 20px 40px -10px hsl(var(--emerald) / 0.3);
+    --shadow-card: 0 10px 25px -5px hsl(var(--navy-deep) / 0.1);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 39% 11%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 26% 14%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 26% 14%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 220 39% 11%;
+
+    --secondary: 158 64% 52%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 16% 22%;
+    --muted-foreground: 220 9% 66%;
+
+    --accent: 158 64% 52%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 16% 22%;
+    --input: 220 16% 22%;
+    --ring: 158 64% 52%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Executive Typography */
+  .text-executive {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  }
+  
+  .text-hero {
+    @apply text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight;
+  }
+  
+  .text-subhero {
+    @apply text-lg md:text-xl text-muted-foreground leading-relaxed;
+  }
+
+  /* Executive Buttons */
+  .btn-executive {
+    @apply bg-gradient-to-r from-emerald to-emerald-light text-white shadow-emerald hover:shadow-xl transition-all duration-300 font-semibold px-8 py-4 rounded-lg;
+  }
+  
+  .btn-outline-executive {
+    @apply border-2 border-emerald text-emerald hover:bg-emerald hover:text-white transition-all duration-300 font-medium px-6 py-3 rounded-lg;
+  }
+
+  /* Premium Cards */
+  .card-executive {
+    @apply bg-card border border-border shadow-card hover:shadow-executive transition-all duration-300 rounded-xl;
+  }
+
+  /* Animations */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+  
+  .animate-counter {
+    animation: counter 2s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes counter {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
